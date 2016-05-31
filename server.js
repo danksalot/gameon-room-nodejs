@@ -20,7 +20,6 @@ var endpointip = (JSON.parse(process.env.VCAP_APPLICATION).application_uris[0] |
 // Automatically retrieves the port of your CF
 var port = (process.env.CF_INSTANCE_PORT || 3000);
 
-
 var logger = new winston.Logger({
   level: 'debug',
   transports: [
@@ -28,7 +27,6 @@ var logger = new winston.Logger({
     new (winston.transports.File)({ filename: './access.log' })
   ]
 });
-
 
 var registration = {
   "fullName": fullName,
@@ -69,8 +67,6 @@ function register()
   var hash = crypto.createHmac('sha256', gameonAPIKey).update(allParams).digest('base64')
 
   console.log("HASH : " + hash)
-
-
 
   var options = {
     host: 'game-on.org',
@@ -307,7 +303,6 @@ function parseGoCommand(conn, target, username, content)
               JSON.stringify(messageObject)
 
     conn.sendText(messageText)
-
   }
   else
   {
@@ -330,7 +325,6 @@ function parseGoCommand(conn, target, username, content)
 
     conn.sendText(messageText)
   }
-
 }
 
 function sendUnknownCommand(conn, target, content) {
